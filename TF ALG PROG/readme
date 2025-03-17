@@ -1,0 +1,81 @@
+// SOBRE O JOGO //
+
+ -> Consiste em um jogo estilo Tower Defense, no qual o usuário deve proteger a
+ sua base e matar todos os inimigos para passar de nível. Para fazer isso, ele deve
+ coletar recursos pelo mapa e a partir destes recursos, colocar obstáculos para
+ derrotar os inimigos.
+ -> O jogador começa com 3 vidas e sua base começa com 1 vida. Quando uma
+ das duas vidas for zerada, o usuário será levado a uma tela de GAME OVER. Caso
+ contrário, o jogador passará de nível (máximo de 99 níveis). Quando completar
+ todos os níveis, o jogador será levado a uma tela de VITÓRIA.
+ -> Para se locomover, o jogador deverá utilizar as teclas “W A S D” ou as setas
+ de seu teclado. Para colocar um obstáculo no mapa, o jogador deve ter mais de 0
+ recursos em seu inventário. Caso isso se verifique, o jogador aperta a tecla “G” e
+ um obstáculo será colocado em sua posição. Caso um inimigo toque em um
+ obstáculo, ambos são eliminados do jogo. Caso o inimigo toque no jogador ou na
+ base, o inimigo é eliminado e é retirada uma vida do jogador ou base.
+ -> O jogador pode se mover para todos os lados, desde que seja um espaço
+ vazio, buraco, inimigo, recurso ou obstáculo. Caso o jogador entre em um buraco,
+ ele será teletransportado para o buraco mais distante que esteja presente no
+ mesmo eixo do buraco original. Caso não haja buracos neste eixo, o jogador
+ simplesmente o atravessa.
+ -> Para pausar o jogo, é necessário apertar a tecla “TAB”. No menu de pause,
+ serão exibidas as opções de continuar a partida, salvar o jogo, carregar uma outra
+ partida (o carregamento será feito a partir de um arquivo nomeado “jogo_salvo.bin”),
+ voltar ao menu principal ou sair do jogo sem salvar.
+ -> Caso o jogador tenha um número par de recursos em seu inventário, sua vida
+ será aumentada em 1 unidade. Caso ele elimine um inimigo com um obstáculo, a
+ vida da base será aumentada em 1 unidade.
+ -> Para abrir o jogo, será necessário baixar a pasta .zip enviada. Dentro dela,
+ haverá uma imagem (sprite) necessária para o carregamento do menu do jogo,
+ além de quatro arquivos do tipo texto, nomeados “nivel1.txt”, “nivel2.txt”, “nivel3.txt”
+ e “nivel4.txt”. Estes arquivos são responsáveis por conter os níveis do jogo
+
+// IMPLEMENTAÇÃO DE ELEMENTOS //
+
+
+-> Para implementar os elementos no jogo, foi utilizada a seguinte
+ nomenclatura:
+
+ Jogador (J)- ROSA
+ Base (S)- AMARELO
+ Buraco (H)- AZUL
+ Inimigos (M)- VERMELHO
+ Parede (W)- MARROM
+ Recurso (R)- VERDE
+ Obstáculo (O)- ROXO
+ Caractere vazio ( )- PRETO
+
+// FUNCIONALIDADE DO JOGO //
+
+ -> Para a funcionalidade do jogo, foram implementadas as seguintes structs e
+ funções, com uma breve descrição do que é feito em cada uma:
+
+ -- Struct jogador- Guarda as informações do jogador
+ -- Struct inimigos- Guarda informações dos inimigos
+ -- Struct quadrado- Guarda informações dos caracteres dos arquivos TXT
+ -- Struct base- Guarda informações da base
+
+
+ -- int carregaMapa- Carrega o arquivo do mapa
+ -- void desenhaMapa- Desenha o mapa do jogo
+ -- void desenhaJogador- Desenha o jogador
+ -- void desenhaInimigo- Desenhao os inimigos
+ -- int adicionaInimigo- Adiciona os inimigos
+ -- void iniciarJogador- Inicializa as informações do jogador
+ -- void moveJogador- Movimentação do jogador (e controle de pegou recurso)
+ -- void teletransportaJogador- Movimentação do jogador através de buracos
+ -- void colocaRecurso- Jogador coloca o recurso
+ -- void moveInimigo- Movimentação dos inimigos (verificação de colisão com jogador,
+ base e obstáculos)
+ -- int pausarJogo- Controle de pause do jogo
+ -- void salvarJogo- Salva as informações
+ -- void carregarJogoSalvo- Carrega as informações salvas
+ -- int desenhaMenu- Desenha o menu inicial do jogo
+ -- int desenhaMenuPause- Desenha o menu de pause do jogo
+ -- void desenhaInfo- Desenha as informações na tela
+ -- void loopJogo- Controla as principais informações do jogo
+ -- void passarNivel- Passa o nível do jogador e chama o próximo arquivo
+ -- int gameOver- Desenha a tela de GAME OVER
+ -- int vitoria- Desenha a tela de VITORIA
+ -- int main- Controle do menu e chamamento das funções
